@@ -1,0 +1,44 @@
+{
+  "summary": "Full backend + frontend E2E testing of UKS Sokolik Niemodlin. 20/20 backend pytest cases passed against public preview URL. Frontend Playwright E2E validated public pages (Aktualnosci, Liga tabs, Turniej ranking+cards), admin login/logout, wrong-password error, and full CRUD for posts/players/matches/tournaments with public-page reflection and ranking auto-computation. All flows working; no critical bugs found.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "GET /api/posts/{id}", "issue": "Uses ObjectId(post_id) without try/except - malformed id would raise 500 instead of 400 (edge case, not exercised by UI)"},
+      {"endpoint": "PUT/DELETE /api/admin/{posts,players,matches,tournaments}/{id}", "issue": "No 404 check when id does not exist - update_one/delete_one silently succeed; returns null for post update (already gone case)"},
+      {"endpoint": "CORS", "issue": "allow_origins='*' with allow_credentials=True is browser-invalid per spec; not a runtime blocker since Bearer tokens are used, but should be an explicit origin list"}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Global", "issues": ["Polish diacritics render correctly. Orange+navy branding consistent. Contrast on navy hero and orange buttons is good."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "(Optional) Add 400/404 handling in admin endpoints when ObjectId is malformed or resource does not exist",
+    "(Optional) Replace CORS wildcard with explicit origin list from env"
+  ],
+  "critical_code_review_comments": [
+    "server.py is a single ~420 line file - acceptable for MVP scope, no split needed yet",
+    "Passwords hashed with bcrypt (correct); JWT expiry 7 days is reasonable",
+    "MongoDB _id properly converted to 'id' via clean() helper; no ObjectId leaks",
+    "All admin routes protected by Depends(get_current_admin) - verified 401 on 5 endpoints without token",
+    "Ranking endpoint correctly aggregates cumulative points, tournaments count, best_placement across tournaments",
+    "Frontend uses REACT_APP_BACKEND_URL, Bearer token attached via axios interceptor, all interactive elements have data-testid"
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py (created)"
+  ],
+  "success_rate": {"backend": "100% (20/20)", "frontend": "100% (all flows in scope passed)"},
+  "test_credentials": "admin@sokolik.pl / Sokolik2025! - working",
+  "seed_data_creation": "None persisted - all test data (TEST_* prefix) created and cleaned up via UI delete flow",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend seeded on startup: 1 admin user + 3 posts + 5 players + 4 matches + 2 tournaments. Public API base is https://sokolik-ping-pong.preview.emergentagent.com/api. Regression pytest at /app/backend/tests/backend_test.py covers auth, public reads, protected 401s, and full CRUD for all 4 entities including ranking auto-computation.",
+  "rca_of_the_issue": "N/A - no bugs identified"
+}
