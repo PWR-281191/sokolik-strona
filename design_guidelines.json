@@ -1,0 +1,95 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 6 (Vibrant Play) mixed with Archetype 2 (Performance Pro)",
+  "rationale": "As a youth table tennis club ('UKS Sokolik Niemodlin'), the design needs to balance energetic, approachable vibes (Youth Coaching) with structured, high-contrast clarity for league results and ranking tables. We avoid corporate templates by using Neo-brutalist crisp edges, high-contrast Navy, and energetic Orange.",
+  "colors": {
+    "primary": "#F08019",
+    "primary_hover": "#D96C12",
+    "secondary": "#1F3A7A",
+    "secondary_hover": "#162B5C",
+    "background": "#FFFFFF",
+    "surface": "#F8FAFC",
+    "surface_alt": "#F1F5F9",
+    "text_main": "#0F172A",
+    "text_muted": "#475569",
+    "border": "#E2E8F0",
+    "border_heavy": "#1F3A7A"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Outfit",
+      "body": "Chivo",
+      "mono": "JetBrains Mono"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#1F3A7A]",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#1F3A7A]",
+      "h3": "text-xl sm:text-2xl font-semibold text-[#1F3A7A]",
+      "h4": "text-lg sm:text-xl font-medium text-[#1F3A7A]",
+      "body": "text-base font-normal text-slate-700 leading-relaxed",
+      "small": "text-sm font-medium text-slate-500",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-[#F08019]"
+    }
+  },
+  "spacing_and_layout": {
+    "container": "max-w-7xl mx-auto px-6 lg:px-8",
+    "section_gap": "py-16 sm:py-24",
+    "bento_grid": "grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8",
+    "data_grid": "grid grid-cols-1 lg:grid-cols-4 gap-4",
+    "card_padding": "p-6 sm:p-8"
+  },
+  "surface_strategies": {
+    "navigation": "Sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#1F3A7A]/10 shadow-sm",
+    "cards_news": "bg-white border-2 border-[#1F3A7A]/10 rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-300",
+    "cards_data": "bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm",
+    "buttons_primary": "bg-[#F08019] text-white font-bold tracking-wide rounded-lg px-6 py-3 hover:bg-[#D96C12] transition-colors shadow-sm",
+    "buttons_secondary": "bg-[#1F3A7A] text-white font-bold tracking-wide rounded-lg px-6 py-3 hover:bg-[#162B5C] transition-colors shadow-sm",
+    "tables": "w-full text-left border-collapse",
+    "table_header": "bg-[#F8FAFC] border-y-2 border-[#1F3A7A] text-[#1F3A7A] font-bold py-3 px-4",
+    "table_row": "border-b border-slate-200 hover:bg-slate-50 transition-colors py-3 px-4"
+  },
+  "components": {
+    "icons_library": "lucide-react",
+    "tables": "Use Shadcn Table component but override with `table_header` and `table_row` styles. Ensure dense padding for League and Tournament pages.",
+    "tabs": "Use Shadcn Tabs for switching between League Rosters and Match Results. Use solid #1F3A7A for active tab state.",
+    "forms": "Use Shadcn Form primitives for the Admin panel (login, create post, add match result). Inputs should have a 2px border on focus matching #F08019.",
+    "badges": "Use rounded-full px-3 py-1 text-xs font-bold. Orange for 'Win', Navy for 'Loss', Slate for 'Upcoming'."
+  },
+  "pages_instructions": {
+    "Home_News": "Tetris bento grid for news items. Highlight the latest post as a massive hero card (col-span-12 lg:col-span-8). Include Facebook link buttons on cards with `data-testid='fb-link-btn'`.",
+    "League": "Control room dense layout. Two main sections: Team Roster (cards with player photos/names) and Match Results (clean tabular view with prominent W/L badges).",
+    "Amateur_Tournament": "Focus on the ranking table. Highlight top 3 players with Gold/Silver/Bronze or Orange accents. Sortable columns (Points, Matches Played).",
+    "Admin_Panel": "Utilitarian dashboard. Sidebar navigation. Clear, high-contrast tables for entity management. Orange primary buttons for 'Add New' actions."
+  },
+  "accessibility_and_testing": {
+    "contrast": "Ensure all text on #F08019 or #1F3A7A backgrounds is white.",
+    "testing_ids": "CRITICAL: All interactive elements MUST have `data-testid`. Examples: `data-testid='news-card'`, `data-testid='league-tab'`, `data-testid='admin-login-btn'`, `data-testid='add-match-form'`."
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1676827613262-5fba25cee5fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwxfHx0YWJsZSUyMHRlbm5pcyUyMHBpbmclMjBwb25nJTIwbWF0Y2h8ZW58MHx8fHwxNzgzMjYwODQ3fDA&ixlib=rb-4.1.0&q=85",
+        "category": "hero_background",
+        "description": "Two ping pong paddles and an orange ball on a blue table. Use as a faded background or hero banner image."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1611251135345-18c56206b863?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHx0YWJsZSUyMHRlbm5pcyUyMHBpbmclMjBwb25nJTIwbWF0Y2h8ZW58MHx8fHwxNzgzMjYwODQ3fDA&ixlib=rb-4.1.0&q=85",
+        "category": "generic_content",
+        "description": "Blue paddle and white ball. Use as fallback image for news articles or tournaments."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1636734909254-ff5c43927e10?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHx0YWJsZSUyMHRlbm5pcyUyMHBpbmclMjBwb25nJTIwbWF0Y2h8ZW58MHx8fHwxNzgzMjYwODQ3fDA&ixlib=rb-4.1.0&q=85",
+        "category": "decorative",
+        "description": "Overhead shot of paddle and ball. Good for 'About the Club' section or side-image."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Install fonts: `Outfit` for headings and `Chivo` for body. Set up in tailwind.config.js.",
+    "Implement the Navigation Header first with the club logo placeholder/text and links to: Aktualności, Liga, Turniej Amatorów, Panel Administratora.",
+    "For the League and Tournament pages, use Shadcn UI Table but apply the high-contrast `table_header` styles defined above.",
+    "Implement the Admin Panel under a `/admin` route with a simple layout containing a sidebar for managing News, Matches, Players, and Tournaments.",
+    "Do NOT use pure #000000 or generic gray. Stick to the Navy (#1F3A7A) and Orange (#F08019) palette.",
+    "Ensure all buttons, form inputs, and links have explicit `data-testid` attributes."
+  ]
+}
