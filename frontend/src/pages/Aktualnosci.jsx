@@ -12,8 +12,8 @@ const NewsCard = ({ post, big }) => (
     }`}
   >
     {post.image && (
-      <div className={`overflow-hidden bg-slate-100 ${big ? "h-64" : "h-44"}`}>
-        <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+      <div className="bg-slate-100">
+        <img src={post.image} alt={post.title} className="block w-full h-auto object-contain" />
       </div>
     )}
     <div className="p-6 sm:p-8 flex flex-col flex-1">
@@ -56,8 +56,12 @@ export default function Aktualnosci() {
     <div>
       {/* Hero */}
       <section className="relative bg-sokolik-navy overflow-hidden">
-        <img src={HERO} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-sokolik-navy via-sokolik-navy/90 to-transparent" />
+        <img
+          src={HERO}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-[center_35%] opacity-45"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-sokolik-navy/92 via-sokolik-navy/78 to-sokolik-navy/30" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 sm:py-32">
           <p className="overline mb-4 text-sokolik-orange">Klub tenisa stołowego</p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-3xl">
