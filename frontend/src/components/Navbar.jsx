@@ -18,7 +18,7 @@ export const Navbar = () => {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/85 backdrop-blur-xl border-b border-sokolik-navy/10 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white md:bg-white/85 md:backdrop-blur-xl border-b border-sokolik-navy/10 shadow-sm transform-gpu">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3" data-testid="nav-logo">
@@ -51,10 +51,24 @@ export const Navbar = () => {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-slate-100 bg-white px-6 py-4 space-y-2" data-testid="mobile-nav">
+        <div
+          key="mobile-nav-panel"
+          className="md:hidden relative isolate transform-gpu border-t border-slate-100 bg-white px-6 py-4 space-y-2"
+          data-testid="mobile-nav"
+        >
           {links.map((l) => (
-            <NavLink key={l.to} to={l.to} end={l.end} onClick={() => setOpen(false)} className={linkClass}>
-              <div className="py-1">{l.label}</div>
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.end}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `block w-full px-4 py-2 rounded-lg text-sm font-bold tracking-wide transition-colors ${
+                  isActive ? "bg-sokolik-navy text-white" : "text-sokolik-navy hover:bg-slate-100"
+                }`
+              }
+            >
+              {l.label}
             </NavLink>
           ))}
           <Link

@@ -9,3 +9,10 @@ corepack yarn start
 Then open:
 http://localhost:3000 
 if it is busy, then 3001
+
+
+Hasło baza danych:
+adminsokolik
+Sokolik2025
+
+JWT_SECRET: sokolikjestnajlepszynacalymswiecie
